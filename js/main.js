@@ -14,3 +14,5 @@ function wlCommonInit(){
 	// Common initialization code goes here
 	
 }
+
+alert("nomelose");
