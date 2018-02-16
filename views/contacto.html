@@ -1,0 +1,20 @@
+<ion-pane cache-view="false">
+  <ion-content has-bouncing="false" ng-class="{expanded:$scope.isExpanded}" 
+                class="full-page-content has-padding-top">
+    <div ng-repeat="portada in jsonPortadas">
+      <div class="row row-long">
+          <div class="col"> </div>
+          <div class="col col-78">
+            <a class="item-content" ng-click="obtenDocumento('{{portada.pdf}}')">
+              <img src="{{portada.raw}}" style="width:auto; height:52vh;">
+            </a>
+          </div>
+          <div class="col"> </div>
+      </div>
+      <!--div class="md-button-contacto" ng-click="abortarDescarga('{{portada.pdf}}')" style="display: block:"><span class="md-inline-list-icon-label">Cancelar</span></div!-->
+      <!--div ng-click="abortarDescarga('{{portada.pdf}}')" id="loading-bar-container"></div-->
+      <div id="loading-bar-container"></div>
+    </div>
+    <div><p></br></br></p></div>
+  </ion-content>
+</ion-pane>

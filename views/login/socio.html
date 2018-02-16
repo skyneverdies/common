@@ -1,0 +1,105 @@
+<!--ion-view-->
+<!--ion-scroll direction="y"-->  
+  <ion-content class="padding">
+  	<center>
+  	<!--div id="icon" style="float: left; max-width: 160px; margin: 0; padding: 1em; width: 14vh; height: 14vh;" ng-click="tomaImagen()" ng-if="profilePicture == null">
+  		<div class="costco-bg" style="border-radius: 50%; width: 14vh; height: 14vh; border: 2px solid;">
+		<div class="ion-camera" style="font-size: 10vh; margin-top: 1vh;"></div>
+		</div>
+  	</div>
+  	<div id="icon" style="float: left; max-width: 160px; margin: 0; padding: 1em; width: 14vh; height: 14vh;" ng-click="tomaImagen()" ng-if="profilePicture != null">
+		<img style="border-radius: 50%; width: 14vh; height: 14vh; border: 2px solid;" ng-src="{{ profilePicture }}" />
+  	</div-->
+  	<div id="icon" style="float: left; max-width: 160px; margin: 0; padding: 1em; width: 14vh; height: 14vh;">
+  		<div class="costco-bg" style="border-radius: 50%; width: 14vh; height: 14vh; border: 2px solid;">
+		<div class="ion-person" style="font-size: 10vh; margin-top: 1vh;"></div>
+		</div>
+  	</div>
+  	</center>
+  	<div id="name" style="margin-left: 18vh; padding: 1em; overflow: hidden;">
+	  	<h3>!Bienvenido!</h3><br />	
+		<h5>{{ datosServicio.firstName }} {{ datosServicio.lastName }}</h5>
+  	</div><br />
+	
+	<div class="accordion" id="accordion">
+	    <div class="accordion-section" style="margin-bottom: 3vh;">
+	        <a class="accordion-section-title icon-left ion-clipboard active" href="#accordion-1">&nbsp;Detalles de la cuenta</a>
+	         
+	        <div id="accordion-1" class="accordion-section-content open" style="display: block;">
+	            <span class="icon-left ion-email">&nbsp;Email: {{ datosServicio.email }}</span><br>
+				<!--span class="icon-left ion-card">&nbsp;Membresia: {{ datosServicio.membershipNumber }}</span><br-->
+				<span class="icon-left ion-card">&nbsp;Membresia:</span> 
+				<span style="margin: -2px;">{{ datoMemberNumber.split('')[0] }}</span>
+				<span style="margin: -2px;">{{ datoMemberNumber.split('')[1] }}</span>
+				<span style="margin: -2px;">{{ datoMemberNumber.split('')[2] }}</span>
+				<span style="margin: -2px;">{{ datoMemberNumber.split('')[3] }}</span>
+				<span style="margin: -2px;">{{ datoMemberNumber.split('')[4] }}</span>
+				<span style="margin: -2px;">{{ datoMemberNumber.split('')[5] }}</span>
+				<span style="margin: -2px;">{{ datoMemberNumber.split('')[6] }}</span>
+				<span style="margin: -2px;">{{ datoMemberNumber.split('')[7] }}</span>
+				<span style="margin: -2px;">{{ datoMemberNumber.split('')[8] }}</span>
+				<span style="margin: -2px;">{{ datoMemberNumber.split('')[9] }}</span>
+				<span style="margin: -2px;">{{ datoMemberNumber.split('')[10] }}</span>
+				<span style="margin: -2px;">{{ datoMemberNumber.split('')[11] }}</span><br>
+				<span class="icon-left ion-calendar">&nbsp;Expira:</span>
+				<span style="margin: -2px;">{{Expira.split('')[6]}}</span>
+				<span style="margin: -2px;">{{Expira.split('')[7]}}</span>
+				<span style="margin: -2px;">/</span>
+				<span style="margin: -2px;">{{Expira.split('')[4]}}</span>
+				<span style="margin: -2px;">{{Expira.split('')[5]}}</span>
+				<span style="margin: -2px;">/</span>
+				<span style="margin: -2px;">{{Expira.split('')[0]}}</span>
+				<span style="margin: -2px;">{{Expira.split('')[1]}}</span>
+				<span style="margin: -2px;">{{Expira.split('')[2]}}</span>
+				<span style="margin: -2px;">{{Expira.split('')[3]}}</span>
+	        </div><!--end .accordion-section-content-->
+	    </div><!--end .accordion-section-->
+	   
+	    <div class="accordion-section" ng-click="checkLog(2);">
+	        <!--a class="accordion-section-title icon-left ion-bag" href="#accordion-2">&nbsp;Certificado de gasolina</a-->
+	        <a class="accordion-section-title icon-left ion-card">&nbsp;Certificado de gasolina</a>
+	         
+	    </div><!--end .accordion-section-->
+	</div><!--end .accordion-->
+	<br /><br /><br />
+	<div class="accordion2" ng-click="openModal();">
+	<div class="accordion-section2" style="margin-bottom: 3vh; background-color: #f7f7f7 !important;">
+	       <a class="accordion-section-title2 icon-left ion-wrench">&nbsp;Ajustes</a>
+	       <!--div class="accordion-section-content2">
+	       	<span class="icon-left ion-unlocked" ng-click="conection(2)" style="color: #0000EE; display:inline;">&nbsp;Cambiar contraseña</span>
+	   	<br /><br />
+	   	<span class="icon-left ion-person" ng-click="cerrarSesion()" style="color: #0000EE; display:inline;">&nbsp;Cerrar sesión</span>
+	       </div-->	           
+	   </div><!--end .accordion-section-->
+	</div><!--end .accordion-->
+	<div>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+	</div>
+  </ion-content>
+<!--/ion-scroll-->
+<!--/ion-view-->
+<script id="modalSocios.html" type="text/ng-template">
+	<ion-modal-view>
+        <ion-header-bar class="bar bar-header item-icon-right costco-bg">
+          <h1 class="title" id="headerModal">Ajustes</h1>
+			<!--a class="button button-icon button-clear button-small con ion-close-round close-modal" ng-click="closeModal()"
+			style="margin-top: -2vh;"></a-->
+			<a class="button button-icon button-clear button-small con ion-close-round close-modal" id="headerModalX" ng-click="closeModal()"></a>
+        </ion-header-bar>
+        <ion-content>
+          <div class="list" style="padding-top: 2vh;">
+				<button class="item item-icon-left" ng-click="closeModal(); conection(2);">
+					<i class="icon ion-unlocked" style="color: #3A6081;"></i>
+				   		<span style="margin: 0; padding: 0; color: #3A6081;">Cambiar contraseña</span>
+				</button>
+				<button class="item item-icon-left" ng-click="closeModal(); cerrarSesion();">
+					<i class="icon ion-person" style="color: #3A6081;"></i>
+				   		<span style="margin: 0; padding: 0; color: #3A6081;">Cerrar sesiòn</span>
+				</button>
+			</div>
+        </ion-content>
+    </ion-modal-view>
+</script>

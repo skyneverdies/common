@@ -1,0 +1,134 @@
+<ion-pane cache-view="false" class="pane" nav-view="active" style="opacity: 1; transform: translate3d(0%, 0px, 0px);">
+  <ion-content class="padding">
+    <br>
+ <div id="encabezadoCard">
+ <div style="height: 2vh;"></div>
+  <center>
+    <div style="float: left; margin: 0; margin-top: -2vh; margin-left: 5vh; padding: 1em;">
+      <img src="images/tarjeta/CashCard_320x203.png" style="width: 15vh; margin-left: -3vh;" />
+    </div>
+  </center>
+    <div id="saldo" style="height: 2vh;">
+      <h4>Saldo: {{ amount }} </h4>
+      <h5>al día  {{saldo.fecha}} </h5>
+      <h5 style="margin: 5px;">No. de tarjeta ...{{ cashCard }} </h5><br />
+    </div>
+    <br />
+      <div style="height: 12vh;"></div>
+    </div>
+    <form ng-submit="enviaRecarga(formaRegistro)" name="formaRegistro">   
+      <center>
+      <div class="list" ng-hide="hideForm == 1">
+        <div class="item item-input item-select item-stable">
+          <div class="input-label">
+            Monto:
+          </div>
+          <select ng-model="dataReload.monto" name="monto" data-tap-disabled="true">
+            <option value="0.00" ng-selected="true">Seleccionar</option>
+            <option value="100.00">$100.00</option>
+            <option value="250.00">$250.00</option>
+            <option value="500.00">$500.00</option>
+          </select>
+        </div>
+      </div>
+      <div ng-show="formaRegistro.monto.$dirty && formaRegistro.tarjeta.$invalid">
+        <span ng-show="formaRegistro.monto.$error.required" style="color:#f53d3d;">Éste campo es obligatorio</span>
+      </div>
+      
+      <div ng-show="validacionMonto == 1">
+        <span style="color:#f53d3d;">Monto sobrepasa el limite de $5,000.00 </span>
+      </div>
+      <div ng-show="validacionDiferenteCero == 1">
+        <span style="color:#f53d3d;">Seleccione una cantidad </span>
+      </div>
+      <div class="list" ng-hide="hideForm == 1 || campoCards != undefined">
+        <label class="item item-radio card1" style="border-radius: 10px;">
+          <input type="radio" name="tarjeta" ng-click="openModal();" required>
+          <div class="radio-content card2">
+            <div class="item-content card3">
+              <span class="ion-plus-circled" style="position: relative;">&nbsp;&nbsp;&nbsp;Selecciona una tarjeta </span>
+            </div>
+            <i class="ion-ios-plus-outline"></i>
+          </div>
+        </label>  
+      </div>
+      <div class="list" ng-hide="hideForm == 1 || campoCards == undefined">
+        <label class="item item-radio card1" style="border-radius: 10px;">
+          <input type="radio" name="tarjeta" ng-model="campoCards.prmIdTarjetaDigital" ng-click="openModal();" value="{{ campoCards.prmIdTarjetaDigital }}" required>
+          <div class="radio-content card2">
+            <div class="item-content card3">&nbsp;&nbsp;&nbsp;
+              <img ng-src="images/tarjeta/ico_{{campoCards.prmMarca}}.gif"><span style="position: relative; top: -.5vh;"> ...{{campoCards.prmDigitos}}</span>
+            </div>
+            <i class="radio-icon ion-checkmark-round"></i>
+          </div>
+        </label>  
+      </div>
+      <div ng-show="formaRegistro.tarjeta.$dirty && formaRegistro.tarjeta.$invalid">
+        <span ng-show="formaRegistro.tarjeta.$error.required" style="color:#f53d3d;">Éste campo es obligatorio</span>
+      </div>
+      <div class="item item-input-inset" id="topCVV" ng-show="(cvv == 0) && (hideForm == 0)">
+        <span style="color: #000000">CVV: </span>&nbsp;
+          <label class="item-input-wrapper">
+            <input type="tel" ng-model="dataReload.cvv" name="ccv" aw-limit-length="3" placeholder="CVV" ng-required="cvv == 0">
+          </label>
+      </div>
+      <div class="item item-input-inset" id="topCVV" ng-show="(cvv == 1) && (hideForm == 0)">
+        <span style="color: #000000">CVV: </span>&nbsp;
+          <label class="item-input-wrapper">
+            <input type="tel" ng-model="dataReload.cvvAmex" name="ccv2" aw-limit-length="4" placeholder="CVV" ng-required="cvv == 1">
+          </label>
+      </div>
+        <div ng-show="(formaRegistro.ccv.$dirty && formaRegistro.ccv.$invalid)||(formaRegistro.ccv2.$dirty && formaRegistro.ccv2.$invalid)">
+        <span ng-show="formaRegistro.ccv.$error.required||formaRegistro.ccv2.$error.required" style="color:#f53d3d;">Éste campo es obligatorio</span>
+      </div>
+      <br />
+      <div id="opcionesSaldo" class="row" ng-hide="hideForm == 1">
+          <div class="col"></div>
+            <div class="col"><button class="button costco-bg" type="button" style="font-size: 12px; border-radius: 10px; margin-left: -1vw;" ng-click="regresa();">
+                Cancelar</button>
+            </div>
+            <div class="col"><button class="button costco-bg" type="submit" ng-disabled="formaRegistro.$invalid" style="font-size: 12px; border-radius: 10px;">
+                Confirmar</button>
+            </div>
+        </div>
+        <div id="opcionesSaldo" ng-show="hideForm == 1">
+          <center>
+            <div style="margin-bottom: 3vh !important;">
+              <a href="" ng-click="conection(2)" style="color: #0000EE; text-decoration:none; font-size: 1.5em;">Ayuda</a>
+            </div>
+          </center>
+          <center>
+          <div><br/><br/><button class="button costco-bg" type="button" style="font-size: 12px; border-radius: 10px;" ng-click="regresa();">
+          Cancelar</button>
+          </div>
+          </center>
+        </div>
+    </form>
+<br /><br />
+<br /><br />
+  </ion-content>
+</ion-pane>
+
+<script id="my-modal.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar class="bar bar-header item-icon-right costco-bg">
+      <h1 class="title" id="headerModal">Seleccione una tarjeta</h1>
+      <a class="button button-icon button-clear button-small con ion-close-round close-modal" id="headerModalX" ng-click="closeModal()"></a>
+    </ion-header-bar>
+    <ion-content>
+      <div style="margin-top: 2vh;">
+        <div class="list" ng-repeat="item in cards" id="listCardsModal">
+          <label class="item-radio card1">
+            <input type="radio" name="tarjeta" ng-model="dataReload.prmIdTarjetaDigital" ng-click="verificarCVV(item.prmMarca); closeModal();" value="{{ item.prmIdTarjetaDigital }}" required>
+            <div class="radio-content card2">
+              <div class="item-content card3">&nbsp;&nbsp;&nbsp;
+                <img ng-src="images/tarjeta/ico_{{item.prmMarca}}.gif"><span style="position: relative; top: -.5vh;"> ...{{item.prmDigitos}}</span>
+              </div>
+              <i class="radio-icon ion-checkmark-round"></i>
+            </div>
+          </label>  
+        </div>
+      </div>
+    </ion-content>
+  </ion-modal-view>
+</script>

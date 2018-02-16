@@ -1,0 +1,45 @@
+<ion-pane cache-view="false">
+  <ion-content class="padding">
+		<div align="center" style="margin-top:2vh; right:0px; left:0px;">
+			<div class="costco-bg" style="border-radius: 50%; width: 23vh; height: 23vh; border: 2px solid;">
+			<div class="ion-person" style="font-size: 20vh;"></div>
+			</div>
+		</div><br />
+		<!--button ng-click="onRemove()">delete</button-->
+		<center>
+		<h4 ng-show="loginFail == 1" style="color:#f53d3d;">Usuario y/o contraseña no son correctos.</h4>
+		<h4 ng-show="loginFail == 2" style="color:#f53d3d;">Su cuenta ya ha sido vinculada a otro dispositivo.</h4>
+		<h4 ng-show="loginFail == 3" style="color:#f53d3d;">Su contraseña esta vencida por favor haga un cambio de contraseña <a ng-show="loginFail == 3" ng-click="conection(2)" style="font-size: 1em; color: blue;"> aquí</a></h4>
+		<form ng-submit=getDatosLogin() name="forma">
+			<label class="item item-input" style="margin-bottom: 3vh !important;">
+			  <input type="email" placeholder="&nbsp;Email" name="emailU" ng-model="user.email" required style="border: 2px solid #3A6081 !important; border-radius: 10px; padding:0 8px;">
+			</label>
+			<div ng-show="forma.emailU.$dirty && forma.emailU.$invalid">
+				<span ng-show="forma.emailU.$error.required" style="color:#f53d3d;">Éste campo es obligatorio</span>
+				<span ng-show="forma.emailU.$error.email" style="color:#f53d3d;">Formato e-mail invalido</span>
+			</div>
+			<label class="item item-input" style="margin-bottom: 3vh !important;">
+			  <input type="password" placeholder="&nbsp;Password" name="passU" ng-model="user.pass" required style="border: 2px solid #3A6081 !important; border-radius: 10px; padding:0 8px;">
+			</label>
+			<div ng-show="forma.passU.$dirty && forma.passU.$invalid" style="margin-bottom: 3vh !important;">
+				<span ng-show="forma.passU.$error.required" style="color:#f53d3d;">Éste campo es obligatorio</span>
+			</div>
+			<div style="width: 80%;">
+				<input type="checkbox" name="terminos" class="costco-bg" id="checkboxTerminos" ng-model="user.terminos" required  /><span ng-click="conection(3)" style="color: #0000EE; text-decoration:none; font-size: 1em; text-align: center;">Conozco y acepto el Aviso de Privacidad de Datos.</span>
+			</div>
+			<div ng-show="forma.terminos.$dirty && forma.terminos.$invalid">
+				<span ng-show="forma.terminos.$error.required" style="color:#f53d3d; margin-bottom: 3vh !important;">Debes aceptar los términos y condiciones</span>
+			</div>
+			<button class="button button-block costco-bg" type="submit" ng-disabled="forma.$invalid" style="border-radius: 10px;">Ingresar</button>
+		</form>
+		<!--a href="" ng-click="conection(1)" style="color: #0000EE; text-decoration:none;">Crear cuenta</a-->
+		<br />
+		<a href="" ng-click="conection(2)" style="color: #0000EE; text-decoration:none;">Olvidé mi contraseña</a>
+		</center>
+		<div class="padding" style="margin-top: 5vh; margin-left: .5vh; margin-right: .5vh; text-align: justify; border: 1px solid; border-radius: 5px; background-color: #fff685; color: #958a3d">
+			<i class="ion-information-circled"></i>
+			<span >Si usted no tiene una cuenta lo invitamos a registrarse en nuestra página de internet www.costco.com.mx</span>
+		</div>
+		<br /><br /><br /><br />
+  </ion-content>
+</ion-pane>

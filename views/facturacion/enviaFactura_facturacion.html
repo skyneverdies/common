@@ -1,0 +1,273 @@
+<ion-pane cache-view="false" class="pane" nav-view="active" style="opacity: 1; transform: translate3d(0%, 0px, 0px); margin-top: 4vh;">
+	<ion-content>
+		<div class="tabs-striped tabs-top tabs-background-light tabs-color-positive">
+		    <div class="tabs">
+		     	<a class="tab-item icon-left ion-chevron-left" ui-sref="app.facturacion">&nbsp;&nbsp;Regresar</a>
+		     	<a class="tab-item active">Datos de Factura</a>
+		    </div>
+		</div>
+		<form class="formEnviarFactura" ng-submit="enviarDatosFactura()" name="formaDatosFactura" novalidate>   
+			<!--div class="item item-input">
+			<span class="label" style="color: #000000">RFC:</span>
+			</div>
+			<div class="item-input-inset item-icon-right">
+				<span><i class="icon ion-compose" style="color: #d9d9d9;"></i></span>
+				<input id="fname" type="text" ng-model="datosFactura.RFC" name="RFC" ng-value="datosFactura.RFC" placeholder="RFC" required>
+			</div>
+			<div ng-show="formaDatosFactura.RFC.$dirty && formaDatosFactura.RFC.$invalid">
+				<span class="padding" ng-show="formaDatosFactura.RFC.$error.required" style="color:#f53d3d;">Éste campo es obligatorio</span>
+			</div>
+			<div class="item item-input">
+			<span class="label" style="color: #000000">Ticket / Orden:</span>
+			</div>
+			<div class="item-input-inset item-icon-right">
+				<span><i class="icon ion-compose" style="color: #d9d9d9;"></i></span>
+				<input id="fname" type="tel" ng-model="datosFactura.ticketOrden" name="ticket" ng-value="datosFactura.ticketOrden" placeholder="Ticket / Orden" required>
+			</div>
+			<div ng-show="formaDatosFactura.ticket.$dirty && formaDatosFactura.ticket.$invalid">
+				<span class="padding" ng-show="formaDatosFactura.ticket.$error.required" style="color:#f53d3d;">Éste campo es obligatorio</span>
+			</div-->
+			<div class="item item-input">
+			<span class="label" style="color: #000000">Razón Social:</span>
+			</div>
+			<div class="item-input-inset item-icon-right">
+				<span><i class="icon ion-compose" style="color: #d9d9d9;"></i></span>
+				<input id="fname" type="text" ng-model="datosFactura.nombre" name="nombre" ng-value="datosFactura.nombre" placeholder="Razón Social" required>
+			</div>
+			<div ng-show="formaDatosFactura.nombre.$dirty && formaDatosFactura.nombre.$invalid">
+				<span class="padding" ng-show="formaDatosFactura.nombre.$error.required" style="color:#f53d3d;">Éste campo es obligatorio</span>
+			</div>
+			<!--div class="item item-input">
+			<span class="label" style="color: #000000">Dirección:</span>
+			</div>
+			<div class="item-input-inset item-icon-right">
+				<span><i class="icon ion-compose" style="color: #d9d9d9;"></i></span>
+				<input id="fname" type="text" ng-model="datosFactura.calle" name="calle" ng-value="datosFactura.calle" placeholder="Dirección" required>
+			</div>
+			<div ng-show="formaDatosFactura.calle.$dirty && formaDatosFactura.calle.$invalid">
+				<span class="padding" ng-show="formaDatosFactura.calle.$error.required" style="color:#f53d3d;">Éste campo es obligatorio</span>
+			</div>
+			<div class="item item-input">
+			<span class="label" style="color: #000000">No. Exterior:</span>
+			</div>
+			<div class="item-input-inset item-icon-right">
+				<span><i class="icon ion-compose" style="color: #d9d9d9;"></i></span>
+				<input id="fname" type="text" ng-model="datosFactura.numeroExt" name="numeroExt" ng-value="datosFactura.numeroExt" placeholder="No. Exterior" required>
+			</div>
+			<div ng-show="formaDatosFactura.numeroExt.$dirty && formaDatosFactura.numeroExt.$invalid">
+				<span class="padding" ng-show="formaDatosFactura.numeroExt.$error.required" style="color:#f53d3d;">Éste campo es obligatorio</span>
+			</div>
+			<div class="item item-input">
+			<span class="label" style="color: #000000">No. Interior:</span>
+			</div>
+			<div class="item-input-inset item-icon-right">
+				<span><i class="icon ion-compose" style="color: #d9d9d9;"></i></span>
+				<input id="fname" type="text" ng-model="datosFactura.numeroInt" name="numeroInt" ng-value="datosFactura.numeroInt" placeholder="No. Interior">
+			</div>
+			<div class="item item-input">
+			<span class="label" style="color: #000000">Colonia:</span>
+			</div>
+			<div class="item-input-inset item-icon-right">
+				<span><i class="icon ion-compose" style="color: #d9d9d9;"></i></span>
+				<input id="fname" type="text" ng-model="datosFactura.colonia" name="colonia" ng-value="datosFactura.colonia" placeholder="Colonia" required>
+			</div>
+			<div ng-show="formaDatosFactura.colonia.$dirty && formaDatosFactura.colonia.$invalid">
+				<span class="padding" ng-show="formaDatosFactura.colonia.$error.required" style="color:#f53d3d;">Éste campo es obligatorio</span>
+			</div>
+			<div class="item item-input">
+			<span class="label" style="color: #000000">Código Postal:</span>
+			</div>
+			<div class="item-input-inset item-icon-right">
+				<span><i class="icon ion-compose" style="color: #d9d9d9;"></i></span>
+				<input id="fname" type="tel" ng-model="datosFactura.codigoPostal" name="codigoPostal" ng-value="datosFactura.codigoPostal" placeholder="Código Postal" required>
+			</div>
+			<div ng-show="formaDatosFactura.codigoPostal.$dirty && formaDatosFactura.codigoPostal.$invalid">
+				<span class="padding" ng-show="formaDatosFactura.codigoPostal.$error.required" style="color:#f53d3d;">Éste campo es obligatorio</span>
+			</div>
+			<div class="item item-input">
+			<span class="label" style="color: #000000">Municipio o Delegación:</span>
+			</div>
+			<div class="item-input-inset item-icon-right">
+				<span><i class="icon ion-compose" style="color: #d9d9d9;"></i></span>
+				<input id="fname" type="text" ng-model="datosFactura.localidad" name="localidad" ng-value="datosFactura.localidad" placeholder="Municipio o Delegación" required>
+			</div>
+			<div ng-show="formaDatosFactura.localidad.$dirty && formaDatosFactura.localidad.$invalid">
+				<span class="padding" ng-show="formaDatosFactura.localidad.$error.required" style="color:#f53d3d;">Éste campo es obligatorio</span>
+			</div><br />
+			<label class = "item item-input item-select" style="margin-bottom: 1vh;">
+				<div class = "label" style="color: #000000">
+					Estado:
+				</div>
+					<select ng-model="datosFactura.estado" name="estado" data-tap-disabled="true" required	style="margin-top:-1.2vh;">
+						<option value="">Seleccionar</option>
+						<option value="1">Aguascalientes</option>
+						<option value="2">Baja California</option>
+						<option value="3">Baja California Sur</option>
+						<option value="4">Campeche</option>
+						<option value="5">Coahuila</option>
+						<option value="6">Colima</option>
+						<option value="7">Chiapas</option>
+						<option value="8">Chihuahua</option>
+						<option value="9">Ciudad de México</option>
+						<option value="10">Durango</option>
+						<option value="11">Guanajuato</option>
+						<option value="12">Guerrero</option>
+						<option value="13">Hidalgo</option>
+						<option value="14">Jalisco</option>
+						<option value="15">México</option>
+						<option value="16">Michoacán</option>
+						<option value="17">Morelos</option>
+						<option value="18">Nayarit</option>
+						<option value="19">Nuevo León</option>
+						<option value="20">Oaxaca</option>
+						<option value="21">Puebla</option>
+						<option value="22">Querétaro</option>
+						<option value="23">Quintana Roo</option>
+						<option value="24">San Luis Potosí</option>
+						<option value="25">Sinaloa</option>
+						<option value="26">Sonora</option>
+						<option value="27">Tabasco</option>
+						<option value="28">Tamaulipas</option>
+						<option value="29">Tlaxcala</option>
+						<option value="30">Veracruz</option>
+						<option value="31">Yucatán</option>
+						<option value="32">Zacatecas</option>
+					</select>
+			</label>
+			<div ng-show="formaDatosFactura.estado.$dirty && formaDatosFactura.estado.$invalid">
+				<span class="padding" ng-show="formaDatosFactura.estado.$error.required" style="color:#f53d3d;">Éste campo es obligatorio</span>
+			</div><br /-->
+
+
+			<div class="item item-input">
+			<span class="label" style="color: #000000">Correo Electrónico:</span>
+			</div>
+			<div class="item-input-inset item-icon-right" ng-show="emailFrecuente.length == 0">
+				<span><i class="icon ion-compose" style="color: #d9d9d9;"></i></span>
+				<input id="fname" type="email" ng-model="datosFactura.correo" name="correo" ng-value="datosFactura.correo" placeholder="Correo Electrónico" required>
+			</div>
+
+
+			<div class="list padding" ng-hide="emailFrecuente.length == 0 || datosFactura.correo != undefined">
+		        <label class="item item-radio card1" style="border-radius: 10px;">
+		          <input type="radio" name="correo" ng-click="openModal(2);" required>
+		          <div class="radio-content card2">
+		            <div class="item-content card3">
+		              <span class="ion-plus-circled" style="position: relative;">&nbsp;&nbsp;&nbsp;Selecciona un correo </span>
+		            </div>
+		            <i class="ion-ios-plus-outline"></i>
+		          </div>
+		        </label>  
+		    </div>
+
+
+
+		    <div class="list padding" ng-hide="emailFrecuente.length == 0 || datosFactura.correo == undefined">
+		        <label class="item item-radio card1" style="border-radius: 10px;">
+		          <input type="radio" name="correo" ng-model="datosFactura.correo" ng-click="openModal(2);" value="" required>
+		          <div class="radio-content card2">
+		            <div class="item-content card3">
+		              <span style="position: relative; top: -.5vh;">Correo: {{datosFactura.correo}}</span>
+		            </div>
+		            <i class="radio-icon ion-checkmark-round"></i>
+		          </div>
+		        </label>  
+		    </div>
+
+
+			<div ng-show="formaDatosFactura.correo.$dirty && formaDatosFactura.correo.$invalid">
+				<span class="padding" ng-show="formaDatosFactura.correo.$error.email" style="color:#f53d3d;">Formato e-mail invalido</span>
+				<span class="padding" ng-show="formaDatosFactura.correo.$error.required" style="color:#f53d3d;">Éste campo es obligatorio</span>
+			</div>
+
+
+			<div class="item item-input" ng-show="emailFrecuente.length == 0">
+			<span class="label" style="color: #000000">Confirma Correo Electrónico:</span>
+			</div>
+			<div class="item-input-inset item-icon-right" ng-show="emailFrecuente.length == 0">
+				<span><i class="icon ion-compose" style="color: #d9d9d9;"></i></span>
+				<input id="fname" type="email" ng-model="datosFactura.concorreo" name="concorreo" ng-value="datosFactura.concorreo" placeholder="Confirma Correo Electrónico">
+			</div>
+			<div ng-show="formaDatosFactura.concorreo.$dirty && formaDatosFactura.concorreo.$invalid">
+				<span class="padding" ng-show="formaDatosFactura.concorreo.$error.email" style="color:#f53d3d;">Formato e-mail invalido</span>
+				<span class="padding" ng-show="formaDatosFactura.concorreo.$error.required" style="color:#f53d3d;">Éste campo es obligatorio</span>
+			</div>
+			<span class="padding" ng-show="correoInvalido == 1" style="color:#f53d3d;">Los correos no coinciden</span>
+			<!--div style="margin-bottom: 3vh !important;">
+				<input type="checkbox" name="terminos" class="costco-bg" ng-model="datos.Terminos" required style="-webkit-transform:scale(2.0);">&nbsp;&nbsp;&nbsp;&nbsp;<a href="" ng-click="conection(3)" style="color: #0000EE; text-decoration:none; font-size: 1.3em;">Términos y condiciones</a>
+			</div>
+			<div ng-show="formaRegistro.terminos.$dirty && formaRegistro.terminos.$invalid">
+				<span ng-show="formaRegistro.terminos.$error.required" style="color:#f53d3d; margin-bottom: 3vh !important;">Debes aceptar los términos y condiciones</span>
+			</div-->
+			<center>
+			<button type="submit" ng-disabled="formaDatosFactura.$invalid" class="button costco-bg" style= "font-size: 16px; margin-top: 3vh; border-radius: 10px;">
+			Confirmar
+			</button>
+			</center>
+		</form>
+		<br /><br /><br /><br /><br /> 
+	</ion-content>
+</ion-pane>
+
+<script id="my-modal-correo.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar class="bar bar-header item-icon-right costco-bg">
+      <h1 class="title" id="headerModal">Correos frecuentes</h1>
+      <a class="button button-icon button-clear button-small con ion-close-round close-modal" id="headerModalX" ng-click="closeModal(3)"></a>
+    </ion-header-bar>
+    <ion-content>
+		<div style="margin-top: 2vh;" >
+	        <div class="list" ng-repeat="item in emailFrecuente" id="listCardsModal" ng-hide="checkboxModel.value1 == true">
+	          	<div class="row">
+				  	<div class="col" style="width: 90%;">
+				  		<label class="item-radio card1">
+				  		<input type="radio" name="correo" ng-model="datosFactura.correo" ng-click="closeModalFrecuente();" value="{{ item }}" required>
+			            <div class="radio-content card2">
+			              <div class="item-content item-icon-right card3">&nbsp;&nbsp;&nbsp;
+			                <span style="position: relative; top: -.5vh; "> {{item}}</span>			                
+			              </div>
+			            </div>
+			            </label>  
+				  	</div>
+				  	<div class="col" style="width: 10%;" align="right">
+				  		<i class="icon button button-icon button-clear ion-trash-a" ng-click="borrarFrecuente([$index]);"></i>
+				  	</div>
+				</div>
+			</div>
+	        <div class="radio-content card2" style="margin-top: 5vh;">
+	            <div class="item-content card3" ng-click="valueCheckbox();">
+					<div class="row padding">
+					  <div class="col item"><label>&nbsp;&nbsp;&nbsp;Añadir correo nuevo</label></div>
+					  <div class="col item" align="right"><input type="checkbox" disabled="disabled" ng-model="checkboxModel.value1" style="-webkit-transform:scale(1.5);"></div>
+					</div>
+	            </div>
+	        </div>
+	        <form ng-submit="closeModal(2);" name="formaCorreo" ng-show="checkboxModel.value1 == true" novalidate> 
+				<div class="item-input-inset">
+					<input id="fname" type="email" ng-model="datosFactura.correo" name="correo"  placeholder="Correo Electrónico" required>
+				</div>
+				<div ng-show="formaCorreo.correo.$dirty && formaCorreo.correo.$invalid">
+					<span class="padding" ng-show="formaCorreo.correo.$error.email" style="color:#f53d3d;">Formato e-mail invalido</span>
+					<span class="padding" ng-show="formaCorreo.correo.$error.required" style="color:#f53d3d;">Éste campo es obligatorio</span>
+				</div>
+				<div class="item-input-inset">
+					<input id="fname" type="email" ng-model="datosFactura.concorreo" name="concorreo"  placeholder="Confirmación de Correo">
+				</div>
+				<div ng-show="formaCorreo.concorreo.$dirty && formaCorreo.concorreo.$invalid">
+					<span class="padding" ng-show="formaCorreo.concorreo.$error.email" style="color:#f53d3d;">Formato e-mail invalido</span>
+				</div>
+				<span class="padding" ng-show="correoInvalido == 1" style="color:#f53d3d;">Los correos no coinciden</span>
+				<br />
+				<center>
+				<button type="submit" ng-disabled="formaCorreo.$invalid" class="button costco-bg" style= "font-size: 16px; margin-top: 3vh; border-radius: 10px;">
+				Confirmar
+				</button>
+				</center>
+			</form>
+			<div class="item-input-inset item-icon-right" style="margin-bottom: 20px; margin-top: 20px;">	
+				<span style="margin-bottom: 20px;"><i class="icon ion-help-circled button button-icon button-clear" style="color:#3A6081;" ng-click="mensajeLimite();"></i></span>
+			</div>
+	    </div>
+    </ion-content>
+  </ion-modal-view>
+</script> 

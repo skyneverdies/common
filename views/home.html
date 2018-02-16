@@ -1,0 +1,112 @@
+<ion-pane cache-view="false">
+	<ion-content class="costco-bg" has-bouncing="false" ng-class="{expanded:$scope.isExpanded}">
+		<div class="home-banner" id="home-banner1">
+			<div ng-if="jsonHomeBanner" ng-repeat="home_banner in jsonHomeBanner">
+				<img src="{{home_banner.raw}}" class="home-banner-slide" ui-sref="app.desctienda">
+			</div>
+			<div ng-if="jsonHomeSlideBanner" >
+				<img src="{{jsonHomeSlideBanner[0].raw}}" class="home-banner-slide" ui-sref="app.desctienda">
+			</div>
+			<!--ion-slide-box on-slide-changed="slideHasChanged($index)" ng-if="jsonHomeSlideBanner"
+							class="item-image" id="item-image1" on-swipe="onSwipe()"
+							show-pager="false" does-continue="true" 
+							auto-play="true" disable-scroll="false">
+				<ion-slide>
+					<a class="item-content" href="#/home"
+						onclick="window.open('https://m.costco.com.mx/view/search?showAll=true&sort=score&search=multivendor', 'blank', 'closebuttoncaption=Inicio,EnableViewPortScale=yes,location=no');">
+						<img src="{{home_banner.raw}}" class="home-banner-slide">
+					</a>
+				<br />
+					<a class="item-content" id="item-content1" 
+						ng-click="conection(1)" 
+						style="margin-top: -10px;">
+						<img src="{{jsonHomeSlideBanner[0].raw}}" class="home-banner-slide" id="home-banner-slide1">
+					</a>
+				</ion-slide>
+				<ion-slide>
+					<a class="item-content" href="#/home"
+						onclick="window.open('https://m.costco.com.mx/view/search?showAll=true&sort=score&search=multivendor', 'blank', 'closebuttoncaption=Inicio,EnableViewPortScale=yes,location=no');">
+						<img src="{{home_banner.raw}}" class="home-banner-slide">
+					</a>
+				<br />
+					<a class="item-content" id="item-content1" 
+						ng-click="conection(2)"
+						style="margin-top: -10px;">
+						<img src="{{jsonHomeSlideBanner[1].raw}}" class="home-banner-slide" id="home-banner-slide1" >
+					</a>
+				</ion-slide>
+				<ion-slide>
+					<a class="item-content" href="#/home"
+						onclick="window.open('https://m.costco.com.mx/view/search?showAll=true&sort=score&search=multivendor', 'blank', 'closebuttoncaption=Inicio,EnableViewPortScale=yes,location=no');">
+						<img src="{{home_banner.raw}}" class="home-banner-slide">
+					</a>
+				<br />
+					<a class="item-content" id="item-content1" 
+						ng-click="conection(3)"
+						style="margin-top: -10px;">
+						<img src="{{jsonHomeSlideBanner[2].raw}}" class="home-banner-slide" id="home-banner-slide1" >
+					</a>
+				</ion-slide>
+				<ion-slide>
+					<a class="item-content" href="#/home"
+						onclick="window.open('https://m.costco.com.mx/view/search?showAll=true&sort=score&search=multivendor', 'blank', 'closebuttoncaption=Inicio,EnableViewPortScale=yes,location=no');">
+						<img src="{{home_banner.raw}}" class="home-banner-slide">
+					</a>
+				<br />
+					<a class="item-content" id="item-content1" 
+						ng-click="conection(4)" 
+						style="margin-top: -10px;">
+						<img src="{{jsonHomeSlideBanner[3].raw}}" class="home-banner-slide" id="home-banner-slide1" >
+					</a>
+				</ion-slide>
+			</ion-slide-box-->
+		</div>
+		<div class="home-content">
+			<ul class="collection">
+				<!--li class="collection-item home" ui-sref="app.desctienda">
+					<a class="item-content">
+					<img src="images/desctienda/icono.png" alt="" class="circle">
+					<span class="title">Descuentos en tienda</span></a>
+				</li-->
+				<li class="collection-item home" ui-sref="app.home">
+					<!--a class="item-content"
+						onclick="window.open('https://m.costco.com.mx', '_blank', 'closebuttoncaption=Regresar,EnableViewPortScale=yes,location=no');" -->
+					<a class="item-content"
+						ng-click="conection2();">
+					<img src="images/compraslinea/icono.png" alt="" class="circle">
+					<span class="title">Compras por internet</span></a>
+				</li>
+				<li class="collection-item home" ui-sref="app.sucursales">
+					<a class="item-content">
+					<img src="images/sucursales/icono.png" alt="" class="circle">
+					<span class="title">Sucursales</span></a>
+				</li>
+				<li class="collection-item home" ng-click="estadoDeFacturacion()">
+					<a class="item-content">
+					<img src="images/cfdi/icono.png" alt="" class="circle">
+					<span class="title">Facturaci&oacute;n Electr&oacute;nica</span></a>
+				</li>
+				<li class="collection-item home" ng-click="checkLog(2);">
+					<a class="item-content">
+					<img src="images/tarjeta/iconov.png" alt="" class="circle">
+					<span class="title">Certificado de gasolina</span></a>
+				</li>
+				<!--li class="collection-item home" ui-sref="app.anegocio">
+					<a class="item-content">
+					<img src="images/anegocios/icono.png" alt="" class="circle">
+					<span class="title">Atenci&oacute;n a Negocios</span></a>
+				</li-->
+				<li class="collection-item home" ui-sref="app.pruebajson">
+					<a class="item-content">
+					<img src="images/anegocios/icono.png" alt="" class="circle">
+					<span class="title">JSON</span></a>
+				</li>
+				<!--li class="collection-item home" ui-sref="app.anegocio">
+					<a class="item-content">
+					<img src="images/anegocios/icono.png" alt="" class="circle">
+					<span class="title">Atenci&oacute;n a Negocios</span></a>
+				</li-->
+			</ul>
+		</div>
+	</ion-content>
+</ion-pane>

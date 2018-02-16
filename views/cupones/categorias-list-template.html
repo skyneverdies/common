@@ -1,0 +1,17 @@
+<md-bottom-sheet class="md-list md-has-header" style="line-height: 0px;" ng-cloak >
+  <div style="width:100%;text-align:center; background-color:rgba(0, 0, 0, 0.92); height:3vh;">
+    <md-button 
+        style="border: 0px; text-align:center; background-color: transparent;" 
+        flex="8" class="ion-chevron-down footer-button-chevron-up"></md-button>
+  </div>
+  <md-subheader>Seleccione una opción</md-subheader>
+  <div style="background-color:rgba(0, 0, 0, 0.9);">
+    <div ng-repeat="item in items">
+      <div ng-if="item.id != selectedIndex" 
+          ng-click="listItemClick($index, '{{ item.categoria }}')"
+          class="md-button-costco" style="padding-top: 2vh; padding-left: 10vh;">
+          <span class="md-inline-list-icon-label">{{ item.name }}</span>
+      </div>
+    </div>
+  </div>
+</md-bottom-sheet>

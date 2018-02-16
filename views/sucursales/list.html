@@ -1,0 +1,22 @@
+<ion-content has-bouncing="false" ng-class="{expanded:$scope.isExpanded}"
+    class="full-page-content" style="padding-top: 16px;">
+    <div class="list">
+        <a ng-repeat="sucursal in jsonObjSuc" class="item" ui-sref="app.viewDetalle({ idSucursal: sucursal.id })" >
+            <div class="row row-small">
+                <div class="col-15">
+                    <div class="imgBackg">
+                        {{$index+1}}
+                    </div>
+                </div>
+                <div class="col-80">
+                    <b>{{sucursal.nombre}}</b>
+                    <p ng-repeat="dir in sucursal.direccion" >
+                    {{dir}}
+                    </p>
+                    <span ng-show="mostrarDistancia" class="icon-badge">{{sucursal.distancia}} km</span>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div><p> </br> </p></div>
+</ion-content>

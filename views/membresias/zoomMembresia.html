@@ -1,0 +1,25 @@
+<div class="modal image-modal transparent" ng-click="closeModal()">
+  <ion-scroll direction="" scrollbar-x="false" scrollbar-y="false" 
+        zooming="true" min-zoom="{{zoomMin}}" class="scroll-zoom">
+       
+    <div style="background-color:#fff">
+        <img src="{{imagentoZoom}}" class="imagen-to-zoom" />
+        <p style="padding: 0px 6% 0px 6%; font-size:3vh"><b>{{name}}</b></p>
+        <div style="padding: 3px 8% 8px 8%; color:#051330; font-size:3vmin; text-align: left;">
+          <ul style="list-style: disc inside">
+            <li style="padding-top:4px;">{{membresiaDataView.recompensa}}</li>
+            <li style="padding-top:5px;">{{membresiaDataView.complementaria}}</li>
+            <li style="padding-top:5px;">{{membresiaDataView.titular}}
+                                        </BR>&nbsp;&nbsp;&nbsp;&nbsp;{{membresiaDataView.adicional1}} 
+                                        </BR>&nbsp;&nbsp;&nbsp;&nbsp;{{membresiaDataView.adicional2}} 
+                                        </BR>&nbsp;&nbsp;&nbsp;&nbsp;{{membresiaDataView.adicional3}}
+            </li>
+          </ul>
+        </div>
+        <div style="padding: 2% 2% 4% 0%">
+          <p><span class="texto-small">* Todos los precios incluyen IVA.</span></p>
+        </div>
+    </div>
+    
+  </ion-scroll>
+</div>

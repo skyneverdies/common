@@ -1,0 +1,178 @@
+<ion-pane cache-view="false" class="pane" nav-view="active" style="opacity: 1; transform: translate3d(0%, 0px, 0px); margin-top: 4vh;">
+	<ion-content>
+		<div class="tabs-striped tabs-top tabs-background-light tabs-color-positive">
+		    <div class="tabs">
+		     	<a class="tab-item" ui-sref="app.facturacion">Facturación</a>
+		     	<a class="tab-item active">Reenvío</a>
+		    </div>
+		</div>
+		<form class="formReenviarFactura" ng-submit="getDatosReenvioFactura()" name="formaReenvioFactura" novalidate>   
+			<center>
+			<div class="item-input-inset item-button-right">
+				<div class="buttons">	
+					<span><i class="icon ion-camera button button-icon button-clear" style="color:#3A6081;" ng-click="openScan();"></i></span>
+					<span><i class="icon ion-help button button-icon button-clear" style="color:#3A6081;" ng-click="openModal(1);"></i></span>
+				</div>
+				<input id="fname" type="tel" ng-model="reenvioFactura.ticketOrden" name="ticketOrden" ng-value="reenvioFactura.ticketOrden" placeholder="Ticket / Orden" required>
+			</div>
+			<div ng-show="formaReenvioFactura.ticketOrden.$dirty && formaReenvioFactura.ticketOrden.$invalid">
+				<span ng-show="formaReenvioFactura.ticketOrden.$error.required" style="color:#f53d3d;">Éste campo es obligatorio</span>
+			</div>
+			<div class="item-input-inset">
+				<input id="fname" type="tel" ng-model="reenvioFactura.membresia" name="membresia"  placeholder="Membresía" required>
+			</div>
+			<div ng-show="formaReenvioFactura.membresia.$dirty && formaReenvioFactura.membresia.$invalid">
+				<span ng-show="formaReenvioFactura.membresia.$error.required" style="color:#f53d3d;">Éste campo es obligatorio</span>
+			</div>
+
+
+			<div class="item-input-inset" ng-show="emailFrecuente.length == 0">
+				<input id="fname" type="email" ng-model="reenvioFactura.correo" name="correo"  placeholder="Correo Electrónico" required>
+			</div>
+
+
+
+
+			<div class="list padding" ng-hide="emailFrecuente.length == 0 || reenvioFactura.correo != undefined">
+		        <label class="item item-radio card1" style="border-radius: 10px;">
+		          <input type="radio" name="correo" ng-click="openModal(2);" required>
+		          <div class="radio-content card2">
+		            <div class="item-content card3">
+		              <span class="ion-plus-circled" style="position: relative;">&nbsp;&nbsp;&nbsp;Selecciona un correo </span>
+		            </div>
+		            <i class="ion-ios-plus-outline"></i>
+		          </div>
+		        </label>  
+		    </div>
+
+
+
+		    <div class="list padding" ng-hide="emailFrecuente.length == 0 || reenvioFactura.correo == undefined">
+		        <label class="item item-radio card1" style="border-radius: 10px;">
+		          <input type="radio" name="correo" ng-model="reenvioFactura.correo" ng-click="openModal(2);" value="" required>
+		          <div class="radio-content card2">
+		            <div class="item-content card3">
+		              <span style="position: relative; top: -.5vh;">Correo: {{reenvioFactura.correo}}</span>
+		            </div>
+		            <i class="radio-icon ion-checkmark-round"></i>
+		          </div>
+		        </label>  
+		    </div>
+	
+
+
+
+			<div ng-show="formaReenvioFactura.correo.$dirty && formaReenvioFactura.correo.$invalid">
+				<span class="padding" ng-show="formaReenvioFactura.correo.$error.email" style="color:#f53d3d;">Formato e-mail invalido</span>
+				<span class="padding" ng-show="formaReenvioFactura.correo.$error.required" style="color:#f53d3d;">Éste campo es obligatorio</span>
+			</div>
+			<div class="item-input-inset" ng-show="emailFrecuente.length == 0">
+				<input id="fname" type="email" ng-model="reenvioFactura.concorreo" name="concorreo"  placeholder="Confirmación de Correo">
+			</div>
+			<div ng-show="formaReenvioFactura.concorreo.$dirty && formaReenvioFactura.concorreo.$invalid">
+				<span class="padding" ng-show="formaReenvioFactura.concorreo.$error.email" style="color:#f53d3d;">Formato e-mail invalido</span>
+			</div>
+			<span class="padding" ng-show="correoInvalido == 1" style="color:#f53d3d;">Los correos no coinciden</span>
+			<br />
+			<!--div style="margin-bottom: 3vh !important;">
+				<input type="checkbox" name="terminos" class="costco-bg" ng-model="datos.Terminos" required style="-webkit-transform:scale(2.0);">&nbsp;&nbsp;&nbsp;&nbsp;<a href="" ng-click="conection(3)" style="color: #0000EE; text-decoration:none; font-size: 1.3em;">Términos y condiciones</a>
+			</div>
+			<div ng-show="formaRegistro.terminos.$dirty && formaRegistro.terminos.$invalid">
+				<span ng-show="formaRegistro.terminos.$error.required" style="color:#f53d3d; margin-bottom: 3vh !important;">Debes aceptar los términos y condiciones</span>
+			</div-->
+			<button type="submit" ng-disabled="formaReenvioFactura.$invalid" class="button costco-bg" style= "font-size: 16px; margin-top: 3vh; border-radius: 10px;">
+			Confirmar
+			</button>
+			<!--div class="item-input-inset item-icon-right" style="margin-bottom: 20px; margin-top: 20px;">	
+				<span style="margin-bottom: 20px;"><i class="icon ion-help-circled button button-icon button-clear" style="color:#3A6081;" ng-click="openModal(1);"></i></span>
+			</div-->
+			</center>
+		</form>
+		<br /><br /><br /><br />
+	</ion-content>
+</ion-pane>
+
+
+<script id="my-modal.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar class="bar bar-header item-icon-right costco-bg">
+      <h1 class="title" id="headerModal">Ayuda</h1>
+      <a class="button button-icon button-clear button-small con ion-close-round close-modal" id="headerModalX" ng-click="closeModal(1)"></a>
+    </ion-header-bar>
+    <ion-content>
+		<div align="center" style="margin-top: 4vh;">
+			<img class="full-image" id="imgAyudaFacturacion" src="images/cfdi/img_ayuda.png" />
+		</div>
+		<div class="padding">
+			<p align="justify" class="item item-text-wrap">
+			Para obtener el número de ticket asegurate de que la franja roja cubra completamente el código de barras.
+			</p>
+		</div>
+    </ion-content>
+  </ion-modal-view>
+</script>
+
+
+
+<script id="my-modal-correo.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar class="bar bar-header item-icon-right costco-bg">
+      <h1 class="title" id="headerModal">Correos frecuentes</h1>
+      <a class="button button-icon button-clear button-small con ion-close-round close-modal" id="headerModalX" ng-click="closeModal(3)"></a>
+    </ion-header-bar>
+    <ion-content>
+		<div style="margin-top: 2vh;" >
+	        <div class="list" ng-repeat="item in emailFrecuente" id="listCardsModal" ng-hide="checkboxModel.value1 == true">
+	          	<div class="row">
+				  	<div class="col" style="width: 90%;">
+				  		<label class="item-radio card1">
+				  		<input type="radio" name="correo" ng-model="reenvioFactura.correo" ng-click="closeModalFrecuente();" value="{{ item }}" required>
+			            <div class="radio-content card2">
+			              <div class="item-content item-icon-right card3">&nbsp;&nbsp;&nbsp;
+			                <span style="position: relative; top: -.5vh; "> {{item}}</span>			                
+			              </div>
+			            </div>
+			            </label>  
+				  	</div>
+				  	<div class="col" style="width: 10%;" align="right">
+				  		<i class="icon button button-icon button-clear ion-trash-a" ng-click="borrarFrecuente([$index]);"></i>
+				  	</div>
+				</div>
+			</div>
+	        <div class="radio-content card2" style="margin-top: 5vh;">
+	            <div class="item-content card3" ng-click="valueCheckbox();">
+					<div class="row padding">
+					  <div class="col item"><label>&nbsp;&nbsp;&nbsp;Añadir correo nuevo</label></div>
+					  <div class="col item" align="right"><input type="checkbox" disabled="disabled" ng-model="checkboxModel.value1" style="-webkit-transform:scale(1.5);"></div>
+					</div>
+	            </div>
+	        </div>
+	        <form ng-submit="closeModal(2);" name="formaCorreo" ng-show="checkboxModel.value1 == true" novalidate> 
+				<div class="item-input-inset">
+					<input id="fname" type="email" ng-model="reenvioFactura.correo" name="correo"  placeholder="Correo Electrónico" required>
+				</div>
+				<div ng-show="formaCorreo.correo.$dirty && formaCorreo.correo.$invalid">
+					<span class="padding" ng-show="formaCorreo.correo.$error.email" style="color:#f53d3d;">Formato e-mail invalido</span>
+					<span class="padding" ng-show="formaCorreo.correo.$error.required" style="color:#f53d3d;">Éste campo es obligatorio</span>
+				</div>
+				<div class="item-input-inset">
+					<input id="fname" type="email" ng-model="reenvioFactura.concorreo" name="concorreo"  placeholder="Confirmación de Correo">
+				</div>
+				<div ng-show="formaCorreo.concorreo.$dirty && formaCorreo.concorreo.$invalid">
+					<span class="padding" ng-show="formaCorreo.concorreo.$error.email" style="color:#f53d3d;">Formato e-mail invalido</span>
+				</div>
+				<span class="padding" ng-show="correoInvalido == 1" style="color:#f53d3d;">Los correos no coinciden</span>
+				<br />
+				<center>
+				<button type="submit" ng-disabled="formaCorreo.$invalid" class="button costco-bg" style= "font-size: 16px; margin-top: 3vh; border-radius: 10px;">
+				Confirmar
+				</button>
+				</center>
+			</form>
+			<div class="item-input-inset item-icon-right" style="margin-bottom: 20px; margin-top: 20px;">	
+				<span style="margin-bottom: 20px;"><i class="icon ion-help-circled button button-icon button-clear" style="color:#3A6081;" ng-click="mensajeLimite();"></i></span>
+			</div>
+	    </div>
+    </ion-content>
+  </ion-modal-view>
+</script> 

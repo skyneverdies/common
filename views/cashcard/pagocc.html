@@ -1,0 +1,68 @@
+<ion-pane cache-view="false" class="pane" nav-view="active" style="opacity: 1; transform: translate3d(0%, 0px, 0px);">
+  <ion-content class="padding">
+    <br>
+ <div id="encabezadoCard">
+ <div style="height: 2vh;"></div>
+  <center>
+    <div style="float: left; margin: 0; margin-top: -2vh; margin-left: 5vh; padding: 1em;">
+      <img src="images/tarjeta/CashCard_320x203.png" style="width: 15vh; margin-left: -3vh;" />
+    </div>
+  </center>
+    <div id="saldo" style="height: 2vh;">
+      <h4>Saldo: {{ amount }} </h4>
+      <h5>al día  {{saldo.fecha}} </h5>
+      <h5 style="margin: 5px;">No. de tarjeta ...{{ cashCard }} </h5><br />
+    </div>
+    <br />
+  <div style="height: 10vh;"></div>
+      <div data-ng-init="init()">
+        <div class="progress-wrapper">
+          <div class="progress">
+          <b>{{humanizeDurationTimer(timer,'s')}}</b>
+          </div>
+          <div round-progress max="timeForTimer" current="timer" clockwise="false" color="{{getColor(timer)}}" rounded="true" class="text-center">
+          </div>
+        </div>
+      </div>
+<center>
+<div ng-controller="PagoccController" ng-style="getColorT(timer)" id="token" style="font-size: 5vh;">
+<!--input >{{ token }}</p-->
+
+<!--Token: <input type="number"><p>20164514</p-->
+<div style="height: 2vh;"></div>
+  <span style="color: black">Token: </span>
+  <span style="font-size: 5vh; margin-right: -1vh">{{token.split('')[0]}}</span>
+  <span style="font-size: 5vh; margin-right: -1vh">{{token.split('')[1]}}</span>
+  <span style="font-size: 5vh; margin-right: -1vh">{{token.split('')[2]}}</span>
+  <span style="font-size: 5vh; margin-right: -1vh">{{token.split('')[3]}}</span>
+  <span style="font-size: 5vh; margin-right: -1vh">{{token.split('')[4]}}</span>
+  <span style="font-size: 5vh; margin-right: -1vh">{{token.split('')[5]}}</span>
+  <span style="font-size: 5vh; margin-right: -1vh">{{token.split('')[6]}}</span>
+  <span style="font-size: 5vh; margin-right: -1vh">{{token.split('')[7]}}</span>
+<br />
+<br />
+<center>
+  <button ng-click="cancelar()" type="button" class="button costco-bg" style= "font-size: 16px; border-radius: 10px;">
+    Salir
+  </button>
+  </center>
+</div>
+</center>
+<br />
+<br />
+<br />
+<br />
+         <!-- Here are the 4 main buttons for the exemple, notice that you only have to pass the number of seconds that you want for the timer -->
+         <!--span class="button button-outline button-positive button-block icon ion-ios-timer-outline button-rounded" ng-click="selectTimer()">&nbsp;10 sec timer</span-->
+         
+       <!--div ng-if="!started && !paused && !done">
+       <div class="row">
+         <div class="col">
+           <button class="button button-outline button-balanced button-rounded button-block" ng-click='startTimer()'>
+             Start
+           </button>
+         </div>
+         </div>
+       </div-->
+       </ion-content>
+     </ion-pane>

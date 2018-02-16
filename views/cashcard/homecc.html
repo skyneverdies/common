@@ -1,0 +1,48 @@
+<ion-pane cache-view="false" class="pane" nav-view="active" style="opacity: 1; transform: translate3d(0%, 0px, 0px);">
+  <ion-content class="padding">
+    <br>
+ <div id="encabezadoCard">
+ <div style="height: 2vh;"></div>
+  <center>
+    <div style="float: left; margin: 0; margin-top: -2vh; margin-left: 5vh; padding: 1em;">
+      <img src="images/tarjeta/CashCard_320x203.png" style="width: 15vh; margin-left: -3vh;" />
+    </div>
+  </center>
+    <div id="saldo" style="height: 2vh;">
+      <h4>Saldo: {{ amount }} </h4>
+      <h5>al día  {{saldo.fecha}} </h5>
+      <h5 style="margin: 5px;">No. de tarjeta ...{{ cashCard }} </h5><br />
+    </div>
+    <br />
+    <center>
+        <div style="height: 10vh;"></div>
+            <div style="background-color: #f7f7f7;" class="rowSubMenu">
+              <div id="btnActualizar" class="botonToolBar" style="display:inline;" ng-click="consultaLogin(1)">
+                <div class="ion-refresh icoToolBar" style="font-size: 4vh; color:#3A6081; display:inline;"></div>
+                  <span style="font-size: 2vh;">&nbsp;Actualizar&nbsp;</span>
+              </div>
+            <!--div style="display:inline-block;">
+              <span style="padding-right: 4vh;">&nbsp;&nbsp;&nbsp;</span-->
+              <div id="btnDescargar" class="botonToolBar btnRecarga" style="display:inline;" ng-click="consultaLogin(2)">
+                <div class="ion-cash" style="font-size: 4vh; color:#3A6081; display:inline;"></div>
+                  <span style="font-size: 2vh;">&nbsp;Recargar&nbsp;</span>
+              </div>
+            <div id="btnDesvincular" class="botonToolBar" style="display:inline;" ng-click="consultaLogin(3)">
+              <div class="icon ion-trash-b icoToolBar" style="font-size: 4vh; color:#3A6081;  display:inline;"></div>
+                <span style="font-size: 2vh;">&nbsp;Desvincular&nbsp;</span>
+            </div>
+            </div>
+            </center>
+  </div>
+      <br />
+      <div align="center" ng-click="consultaLogin(4)">
+            <img src="images/cashcard/btn_pagar.png" style="width: 70vw;"/>
+            <!--div class="costco-bg" style="border-radius: 50%; width: 33vh; height: 33vh; border: 2px solid ;">
+            <br>
+                <div class="ion-social-usd" style="margin-top:3vh; font-size: 13vh;"></div>
+                <h2 style="color:white;">Pagar</h2>
+            </div-->
+      </div>
+    <br />
+    </ion-content>
+</ion-pane>

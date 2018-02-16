@@ -1,0 +1,44 @@
+  <ion-pane cache-view="false" class="pane" nav-view="active" style="opacity: 1; transform: translate3d(0%, 0px, 0px);">
+    <ion-content class="padding">
+      <center>
+        <!--div aligh= center id="iconcard" style="max-width: 160px; margin: 0; margin-top: 1vh; height: 8vh; top:3vh; right:0px; left:0px;">
+          <div class="ion-card" style="font-size: 25vh; color:#217009; margin-left: -3vh"></div>
+        </div-->
+        <!--div class="item item-image">
+          <img src="images/tarjeta/CashCard_320x203.png">
+        </div-->
+        <img src="images/tarjeta/CashCard_320x203.png" style="width: 60%; margin: 0; margin-top: 1.5vh; top:3vh; right:0px; left:0px;">
+        <h4>Registre su nuevo certificado de gasolina</h4>
+        <div class="list"></div>      
+    </center>
+   <form ng-submit="confirmaVinculacion()" name="formaRegistro">   
+  	<center>
+      <div class="item item-input-inset">
+        <label class="item-input-wrapper">
+        <input type="number" ng-model="datos.cashCardNumber" name="cashCardNumber"  placeholder="Número al reverso de la tarjeta" required>
+        </div>
+       	<div ng-show="formaRegistro.cashCardNumber.$dirty && formaRegistro.cashCardNumber.$invalid">
+			<span ng-show="formaRegistro.cashCardNumber.$error.required" style="color:#f53d3d;">Éste campo es obligatorio</span>
+		</div>
+		
+		<br />
+		
+		<div style="margin-bottom: 3vh !important;">
+	    <input type="checkbox" name="terminos" class="costco-bg" ng-model="datos.Terminos" required style="-webkit-transform:scale(2.0);">&nbsp;&nbsp;&nbsp;&nbsp;<a href="" ng-click="conection(3)" style="color: #0000EE; text-decoration:none; font-size: 1.3em;">Términos y condiciones</a>
+    </div>
+	  <div ng-show="formaRegistro.terminos.$dirty && formaRegistro.terminos.$invalid">
+			<span ng-show="formaRegistro.terminos.$error.required" style="color:#f53d3d; margin-bottom: 3vh !important;">Debes aceptar los términos y condiciones</span>
+		</div>
+    <button type="submit" ng-disabled="formaRegistro.$invalid" class="button costco-bg" style= "font-size: 16px; margin-top: 3vh; border-radius: 10px;">
+       Confirmar
+    </button>
+    <br /><br />          
+  	 </center>
+	</form>  
+    <center>
+      <button ng-click="cancelar()" class="button costco-bg" style= "font-size: 16px; border-radius: 10px;">
+         Cancelar
+      </button>
+    </center>
+    </ion-content>
+</ion-pane>

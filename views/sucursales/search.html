@@ -1,0 +1,49 @@
+<!-- Search: Mostrar criterios de busqueda -->
+<ion-content has-bouncing="false" ng-class="{expanded:$scope.isExpanded}" class="full-page-content" style="padding-top: 6px; padding-bottom: 20px;">
+	  <ion-item>
+	     <h3 style="text-align: center;">Seleccione los criterios para la <br>B&uacute;squeda de sucursales</h3>
+	  </ion-item>
+	
+	  <div class="item item-divider">Tipo de b&uacute;squeda</div>
+	
+	  <ion-radio  ng-model="opcionBusqueda" icon="ion-checkmark-circled" value="1"><i class="icon ion-ios-browsers-outline placeholder-icon"></i>Todas las sucursales</ion-radio>
+	  <ion-radio  ng-model="opcionBusqueda" icon="ion-checkmark-circled" value="2"><i class="icon ion-ios-browsers-outline placeholder-icon"></i>Por direcci&oacute;n</ion-radio>
+	
+	  <label class="item" ng-show="opcionBusqueda=='2'">
+	      <label class="item item-input " >
+	      <i class="icon ion-edit placeholder-icon"></i>
+	      <input type="text" placeholder="C&oacute;digo postal, ciudad, direcci&oacute;n" ng-model="direccion">
+	    
+	      </label>
+	      <div ng-show="(opcionBusqueda==2 && !(direccion.length>=4))" class="button button-clear button-small" >
+	         Completa la informaci&oacute;n para continuar
+	      </div>
+	  </label>
+	
+	  <ion-radio  ng-model="opcionBusqueda" icon="ion-checkmark-circled" value="3"><i class="icon ion-ios-browsers-outline placeholder-icon"></i>Por ubicaci&oacute;n actual</ion-radio>
+	
+	  <div class="item item-divider"></div>
+	
+	  <label class="item item-select">
+	     <span class="input-label">Sucursales a mostrar</span>
+	         <select name="opciones" id="opciones" ng-model="opciones.val">
+	             <option value="5" >5</option>
+	             <option value="10">10</option>
+	             <option value="15">15</option>
+	             <option value="20">20</option>
+	             <option value="1000">Todas</option>
+	         </select>
+	  </label>
+		
+	  <ion-item class="" ng-show="!(opcionBusqueda==2 && !(direccion.length>=4))">
+	     <a class="button button-block" 
+	      ui-sref="app.list({ total: opciones.val, direccion: direccion, busqueda: opcionBusqueda })">
+	     <button class="button button-block button-costco icon ion-android-sync"> Buscar</button></a>
+	  </ion-item>
+	
+	  <ion-item class="" ng-show="(opcionBusqueda==2 && !(direccion.length>=4))">
+	     <a class="button button-block" >
+	     <button class="button button-block button-dark icon ion-android-sync"> Buscar</button></a>
+	  </ion-item>
+	
+</ion-content>

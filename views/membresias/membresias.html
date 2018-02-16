@@ -1,0 +1,17 @@
+<ion-pane cache-view="false">
+  <ion-content ng-class="{expanded:$scope.isExpanded}" class="full-page-content">
+		<div class="list">
+			<div ng-repeat="item in groups" on-tap="showImages({{item.id}})">
+						<img src="{{item.picture}}" class="seccion-imagen-memb" />
+			</div>
+		</div>
+		<center>
+			<!--div onclick="window.open(encodeURI('https://docs.google.com/gview?embedded=true&url=https://www3.costco.com.mx/portal/documentos/archivos/Contrato-06-08_Inicio_FY17.pdf'), '_blank', 'EnableViewPortScale=yes,location=no');"
+			style="background-color: rgba(58, 96, 129, 0.9); border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer;"-->
+			<div ng-click="conection4();"
+			style="background-color: rgba(58, 96, 129, 0.9); border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer;">
+			<span>Consulte términos y condiciones</span>
+		</center>
+		<div><p></br></br></br></p></div>
+  </ion-content>
+</ion-pane>

@@ -1,0 +1,21 @@
+<ion-pane cache-view="false" class="pane" nav-view="active" style="opacity: 1; transform: translate3d(0%, 0px, 0px); margin-top: 4vh;">
+	<ion-content>
+	<br><br><br>
+	<form ng-submit="encrypt();" name="formaRFC"> 
+        <div class="item-input-inset">
+			<input id="fname" type="text" ng-model="test.pass" value="" name="RFC"  placeholder="RFC" style="text-transform: uppercase;" required>
+		</div>
+		<center>
+		<button type="submit" class="button costco-bg" style= "font-size: 16px; margin-top: 3vh; border-radius: 10px;">
+		Add
+		</button>		
+		</center>
+	</form>
+	<button ng-click="show();" class="button costco-bg" style= "font-size: 16px; margin-top: 3vh; border-radius: 10px;">
+	Show
+	</button>
+	<button ng-click="remove();" class="button costco-bg" style= "font-size: 16px; margin-top: 3vh; border-radius: 10px;">
+	remove
+	</button>
+	</ion-content>
+</ion-pane>

@@ -1,0 +1,92 @@
+<ion-pane cache-view="false">
+	<ion-content has-bouncing="false" ng-class="{expanded:$scope.isExpanded}" 
+		style="padding-bottom:100px; padding-top:1px;">
+		<a ng-click="mapa();">
+		<div id="map" data-tap-disabled="true"></div>
+	
+		<div id="indicaciones" class="item" style="display:none; padding-top:1%; padding-left:1px;">
+			<div class="item" style="color: #fff; background-color: #666;">
+				<i class="icon ion-navigate"></i><b>&nbsp;Indicaciones</b>
+			</div>
+			<div id="panel_ruta" data-tap-disabled="true" class="panel-ruta"></div>
+		</div>
+		<br />	
+		<div class="list" style="padding-top:20px; padding-left:2%; ">
+			<ion-item>
+			</a>
+			</ion-item>
+			<ion-item style="margin-top: -30px;">
+				<div>
+					<h2><b>{{detalle.nombre}}</b></h2><br />
+					<i class="icon ion-ios7-location"></i><b>&nbsp;Direcci&oacute;n</b>
+						<span class="input-label">
+						<div ng-repeat="dir in detalle.direccion" style="padding-left: 2%;">
+								<p>{{dir}}</p>
+						</div>
+						</span>
+				</div>	
+			</ion-item>
+			<ion-item >
+					<div class="row-med">
+						<div class = "col">
+							<div>
+								<i class="icon ion-ios7-timer"></i><b>&nbsp;Horarios</b>
+									<span class="input-label" ng-if="detalle.horarioLunesSabado">
+										Lunes a s&aacute;bado<br>
+										<p>{{detalle.horarioLunesSabado}}</p>
+									</span>
+									<span class="input-label" ng-if="detalle.horarioLunesViernes">
+										Lunes a viernes<br>
+										<p>{{detalle.horarioLunesViernes}}</p>
+									</span>
+									<span class="input-label" ng-if="detalle.horarioDomingo">
+										Dom&iacute;ngos<br>
+										<p>{{detalle.horarioDomingo}}</p>
+									</span>
+									<span class="input-label" ng-if="!detalle.horarioDomingo">
+										<p>No disponible</p>
+									</span>
+							</div>
+						</div>
+
+						<div class = "col">
+							<div>
+								<i class="icon ion-ios7-telephone"></i><b>&nbsp;Tel&eacute;fonos</b>
+									<span class="input-label">
+									<a ng-href="tel:{{telefono}}" ng-repeat="telefono in detalle.telAtencionNegocios" >
+										{{telefono}}<br>
+									</a>
+									<a ng-href="tel:{{telefono}}" ng-repeat="telefono in detalle.telConmutador" >
+										{{telefono}}<br>
+									</a>
+									</span>
+							</div>
+						</div>
+					</div>
+			</ion-item>
+
+			<ion-item >
+				<div>
+					<i class="icon ion-bag"></i><b>&nbsp;Departamentos y Servicios</b>
+					<span class="input-label" ng-if="detalle.servicios">
+						<div ng-repeat="servicio in detalle.servicios">
+							<i class="icon {{servicios[servicio].icon}}"></i> {{servicios[servicio].etiqueta}}
+						</div>
+					</span>
+					<span class="input-label" ng-if="!detalle.servicios">No disponibles</span>
+				</div>
+			</ion-item>
+
+			<ion-item >
+				<div>
+					<i class="icon ion-calendar"></i><b>&nbsp;Apertura</b>
+					<span class="input-label">
+						{{detalle.apertura}}<br>
+					</span>
+				</div>
+				<div><p></br></br></br></br></p></div>
+			</ion-item>
+
+		</div>
+	</ion-content>
+</ion-pane>

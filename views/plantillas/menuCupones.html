@@ -1,0 +1,101 @@
+<ion-scroll scrollbar-y="false" scrollbar-x="false" locking="true" overflow-scroll="false" paging="false" zooming="false" has-bouncing="false">
+<ion-side-menus>
+	<ion-side-menu-content>
+		<ion-nav-bar class="costco-bg" 
+					ng-class="{expanded: isExpanded,'has-header-fab-left': hasHeaderFabLeft, 'has-header-fab-right': hasHeaderFabRight}"
+					align-title="left">
+			<ion-nav-buttons side="left">
+				<button class="button button-icon button-clear icono-ubicacion ion-navicon" menu-toggle="right">
+				</button>
+				<div align="center" style="position:absolute; top:8px; right:0px; left:0px;">
+					<a><img class="logo-costco" src="images/logo/logo.png" /></a>
+				</div>
+			</ion-nav-buttons>
+			<ion-nav-buttons side="right">
+				<button class="button button-icon button-clear icono-ubicacion ion-location" ui-sref="app.sucursales">
+				</button>
+			</ion-nav-buttons>
+		</ion-nav-bar>
+		<ion-nav-view name="simpleContent" ng-class=""></ion-nav-view>
+	</ion-side-menu-content>
+	<ion-side-menu side="right" class="no-header-menu">
+		<ion-header-bar class="costco-bg expanded" 
+					style="background: url('images/home/banner_menu.jpg'); background-size: cover;">
+		</ion-header-bar>
+		<ion-content class="full-menu-content costco-bg has-expanded-header">
+			<ul class="collection">
+				<li class="collection-item menu" nav-clear menu-close ui-sref="app.home">
+					<img src="images/home/icono.jpg" alt="" class="circle">
+					<span class="title">Inicio</span>
+				</li>
+				<li class="collection-item menu" nav-clear menu-close ng-click="checkLog(1)">
+					<img src="images/login/login.png" alt="" class="circle">
+					<span class="title">Mi cuenta</span>
+				</li>
+				<li class="collection-item menu" nav-clear menu-close ng-click="checkLog(2);">
+					<img src="images/tarjeta/iconov.png" alt="" class="circle">
+					<span class="title">Certificado de gasolina</span>
+				</li>
+				<!--li class="collection-item menu" nav-clear menu-close ui-sref="app.desctienda">
+					<img src="images/desctienda/icono.png" alt="" class="circle">
+					<span class="title">Descuentos en tienda</span>
+				</li-->
+				<li class="collection-item menu" nav-clear menu-close 
+						ng-click="conection2();">
+					<img src="images/compraslinea/icono.png" alt="" class="circle">
+					<span class="title">Compras por internet</span>
+				</li>
+				<li class="collection-item menu" nav-clear menu-close ui-sref="app.sucursales">
+					<img src="images/sucursales/icono.png" alt="" class="circle">
+					<span class="title">Sucursales</span>
+				</li>
+				<li class="collection-item menu" nav-clear menu-close 
+						 ng-click="estadoDeFacturacion()">
+					<img src="images/cfdi/icono.png" alt="" class="circle">
+					<span class="title">Facturaci&oacute;n Electr&oacute;nica</span>
+				</li>
+				<li class="collection-item menu" nav-clear menu-close ui-sref="app.membresias">
+					<img src="images/membresias/icono.png" alt="" class="circle">
+					<span class="title">Membres&iacute;as</span>
+				</li>
+				<li class="collection-item menu" nav-clear menu-close ui-sref="app.contacto">
+					<img src="images/contacto/icono.png" alt="" class="circle">
+					<span class="title">Costco Contacto</span>
+				</li>
+				<!--li class="collection-item menu" nav-clear menu-close ui-sref="app.anegocio">
+					<img src="images/anegocios/icono.png" alt="" class="circle">
+					<span class="title">Atenci&oacute;n a Negocios</span>
+				</li-->
+				<li class="collection-item menu" nav-clear menu-close ui-sref="app.tarjetaCredito">
+					<img src="images/tarjeta/icono.png" alt="" class="circle">
+					<span class="title">Tarjeta de Cr&eacute;dito Costco</span>
+				</li>
+				<!--li class="collection-item menu" nav-clear menu-close ui-sref="app.kirkland">
+					<img src="images/kirkland/icono.png" alt="" class="circle">
+					<span class="title">Kirkland signature</span>
+				</li-->
+				<!--li class="collection-item menu" nav-clear menu-close ui-sref="app.pruebajson">
+					<img src="images/kirkland/icono.png" alt="" class="circle">
+					<span class="title">JSON</span>
+				</li-->
+				<li class="collection-item menu" nav-clear menu-close style="height: 0vh;"> 
+					<span class="title"></span>
+				</li>
+			</ul>
+		</ion-content>
+	</ion-side-menu>
+</ion-side-menus>
+<ion-footer-bar id="footerRef" align-title="center" ng-controller="DesctiendaController">
+	<div style="width:100%;" ng-if="categoriaSelect" on-touch="showListBottomSheet()">
+		<div style="width:100%;text-align:center; background-color:transparent; height:3vh; padding-top:0px">
+			<md-button class="ion-chevron-up footer-button-chevron-up" flex="8">
+			</md-button>
+		</div>
+		<div class="md-button-costco"
+			style="width: 100%;padding-top: 2vh; padding-bottom: 0px; border:0px; text-align: center !important;">
+			<span class="md-inline-list-icon-label">{{categoriaSelect}}</span>
+		</div>
+	</div>
+</ion-footer-bar>
+</ion-content>
+</ion-scroll>
