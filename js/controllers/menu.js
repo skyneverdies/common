@@ -106,13 +106,14 @@ angular.module('starter.menu', [])
             $interval.cancel(intervalo);
             if($state.current.name.indexOf('app') !== -1 ) {
             	WL.Logger.debug('AppCtrl ->  Resume State:: '+$state.current.name);
-                
+                /*
                 if($state.current.name == 'app.viewDetalle' ) {
                     $state.go('app.sucursales', $stateParams, {reload: true, inherit: false});
                     //$state.reload();
                     WL.Logger.debug('Reload app.viewDetalle ...');
                     //$scope.appCtrl.resetMember();
                 }
+                */
                 
             }
             //$interval(callGetState, intervalo, numrepit);

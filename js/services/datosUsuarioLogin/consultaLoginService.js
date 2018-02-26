@@ -54,7 +54,7 @@ app.factory("consultaLogin", function($state, $http)
 
   function consultaServicio(uuid, dir){
     //$http.get('https://wwwqa.costco.com.mx/wps/eMobile/service/authentication?email=' + dataUser.email + '&password=' + dataUser.pass + '&vartemp=' + dataUser.vartemp + '&ouid=' + uuid)
-    $http.get("https://"+ambiente+".costco.com.mx/wps/eMobile/service/authentication?email=" + dataUser.email + "&password=" + dataUser.pass + "&vartemp=" + dataUser.vartemp + "&ouid=" + uuid)
+    $http.get("https://"+ambiente+".costco.com.mx/wps/eMobile/service/authentication?email=" + dataUser.email + "&password=" + dataUser.pass + "&vartemp=" + dataUser.vartemp + "&ouid=" + uuid, {timeout: 6000})
       .success(function(data){
           busyIndicator.hide();
           console.log('los datos son validateddddddddd::' + JSON.stringify(data.validated));

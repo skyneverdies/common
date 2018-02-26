@@ -29,7 +29,94 @@ angular.module('starter.sucursales', [])
     };
 
     //WL.Logger.debug("InitCtrl listando sucursales:" + paramMostrar + " de:" + $scope.totalSucursales);
-    WL.Device.getNetworkInfo(getNetworkInfoCallback);
+
+    
+    $scope.$on('$ionicView.beforeEnter', function(){
+      busyIndicator.show();
+      sucursalesService.resetSucursales();
+      var invocationData = getSucursales();
+      WL.Client.invokeProcedure(invocationData,{
+          onSuccess : function(result) {
+            //console.log('versiones :: ' + result.invocationResult.array.length);
+            for (var i = 0; i < result.invocationResult.array.length; i++) {
+             sucursalesService.setSucursales(result.invocationResult.array[i]); 
+            }
+            sucursalesService.saveSucursales();
+            WL.Device.getNetworkInfo(getNetworkInfoCallback);
+          },
+          onFailure : function(result) {
+            console.log('sucursales service fallo onFailure;; ');
+            /*
+            if (WL.JSONStore && WL.JSONStore.get('sucursales') != undefined) {
+                console.log('!= undefined onFailure;;');
+                try{
+                    WL.JSONStore.get('sucursales').findAll(optionsIni).then(function (res) {
+                        console.log('show data sucursales onFailure;; ' + JSON.stringify(res));
+                        if (res.length != 0) {
+                          for (var i = 0; i < res.length; i++) {
+                           sucursalesService.setSucursales(res[i].json); 
+                          }
+                          WL.Device.getNetworkInfo(getNetworkInfoCallback);
+                        } else {
+                          WL.SimpleDialog.show("Advertencia", "No cuenta con señal a Internet, la información mostrada puede no ser la más reciente ", [ { text: "Aceptar", handler: function(){} } ]);
+                          $state.go('app.home');
+                        }
+                    }).fail(function (errorObject) {
+                        console.log('show data error onFailure;;' + errorObject.msg);
+                        WL.SimpleDialog.show('Advertencia', 'Su solicitud no pudo ser procesada, por favor intente más tarde.', [ { text: "Aceptar", handler: function(){} } ]);
+                        $state.go('app.home');
+                    });
+                } catch(e) {
+                    console.log('error onFailure;;' + e);
+                    WL.SimpleDialog.show('Advertencia', 'Su solicitud no pudo ser procesada, por favor intente más tarde.', [ { text: "Aceptar", handler: function(){} } ]);
+                    $state.go('app.home');
+                } 
+            } else {
+                console.log('== undefined onFailure;;');
+                */
+                WL.JSONStore.init(collections, optionsIni)
+                .then(function () {
+                    //handle success
+                    try{
+                        WL.JSONStore.get('sucursales').findAll(optionsIni).then(function (res) {
+                            console.log('show data sucursales onFailure;; ' + JSON.stringify(res));
+                            if (res.length != 0) {
+                              for (var i = 0; i < res.length; i++) {
+                               sucursalesService.setSucursales(res[i].json); 
+                              }
+                              WL.Device.getNetworkInfo(getNetworkInfoCallback);
+                            } else {
+                              WL.SimpleDialog.show("Advertencia", "No cuenta con señal a Internet, la información mostrada puede no ser la más reciente ", [ { text: "Aceptar", handler: function(){} } ]);
+                              $state.go('app.home');
+                            }
+                        }).fail(function (errorObject) {
+                            console.log('show data error onFailure;;' + errorObject.msg);
+                            WL.SimpleDialog.show('Advertencia', 'Su solicitud no pudo ser procesada, por favor intente más tarde.', [ { text: "Aceptar", handler: function(){} } ]);
+                            $state.go('app.home');
+                        });
+                    } catch(e) {
+                        console.log('error onFailure;;' + e);
+                        WL.SimpleDialog.show('Advertencia', 'Su solicitud no pudo ser procesada, por favor intente más tarde.', [ { text: "Aceptar", handler: function(){} } ]);
+                        $state.go('app.home');
+                    }
+                })
+                .fail(function (errorObject) {
+                    //handle failure
+                    console.log('no function fail;;' + JSON.stringify(errorObject));
+                    WL.SimpleDialog.show('Advertencia', 'Su solicitud no pudo ser procesada, por favor intente más tarde.', [ { text: "Aceptar", handler: function(){} } ]);
+                    $state.go('app.home');
+                });
+            /*    
+            }
+            */
+          }
+      });      
+    });
+    
+  
+    //
+
+
     
     function callTodasSucursales() {
         //WL.Logger.debug("InitCtrl listando sucursales is:: "+$scope.obtnerTodasSuc);
@@ -43,8 +130,7 @@ angular.module('starter.sucursales', [])
     }
 
     function getNetworkInfoCallback(info) {
-        busyIndicator = new WL.BusyIndicator("content", { text: "Buscando ubicación...", boxLength: 250 });
-        busyIndicator.show();
+        //busyIndicator = new WL.BusyIndicator("content", { text: "Buscando ubicación...", boxLength: 250 });
 
         if (info.isNetworkConnected == true || info.isNetworkConnected == 'true') {
             var intervalo = 10000; //intervalo de tiempo en milisegundos
@@ -94,7 +180,7 @@ angular.module('starter.sucursales', [])
             $scope.mostrarDistancia = false;
             $scope.jsonObjSuc = sucursalesService.getByNumber(paramMostrar, listaSucursalesPorMostrar);
             $scope.obtnerTodasSuc = false;
-            busyIndicator.hide();
+            $timeout( function(){busyIndicator.hide();},2000);        
         }
     }
     
@@ -183,7 +269,6 @@ angular.module('starter.sucursales', [])
       $state.go('search');
     };
 
-
   })
 
 
@@ -214,10 +299,12 @@ angular.module('starter.sucursales', [])
     $scope.validar = function () {
       WL.Logger.debug("Validando datos Max " + $scope.opciones.val + " - Dir " + $scope.direccion + " - Opc " + $scope.opcionBusqueda);
 
-      if ($scope.opcionBusqueda == '2' && !$scope.direccion)
+      if ($scope.opcionBusqueda == '2' && !$scope.direccion){
         alert("Falta completar la información");
-      else
-        $state.go('list', { total: $scope.opciones.val, direccion: $scope.direccion, busqueda: $scope.opcionBusqueda });
+      }
+      else{
+        $state.go('InitCtrl', { total: $scope.opciones.val, direccion: $scope.direccion, busqueda: $scope.opcionBusqueda });
+      }
 
       return;
     };
@@ -419,17 +506,17 @@ angular.module('starter.sucursales', [])
       $scope.servicios = {
         "REVELADO_DIGITAL": { etiqueta: "Revelado digital", icon: "ion-images" },
         "CHOCOLATERIA": { etiqueta: "Chocolatería", icon: "ion-bug" },
-        "SERVICIO_DELI": { etiqueta: "Servicio Deli", icon: "ion-android-hand" },
+        "SERVICIO_DELI": { etiqueta: "Servicio Deli", icon: "ion-pizza" },
         "ENTREGA_NEGOCIO": { etiqueta: "Entrega a su Negocio", icon: "ion-ios7-home" },
         "CENTRO_LLANTERO": { etiqueta: "Centro Llantero", icon: "ion-model-s" },
         "AYUDA_AUDITIVA": { etiqueta: "Centro de Ayuda Auditiva", icon: "ion-volume-high" },
-        "FRUTAS_VERDURAS": { etiqueta: "Frutas y Verduras", icon: "ion-ios-nutrition" },
-        "CARNICERIA": { etiqueta: "Carnicería", icon: "ion-fork" },
+        "FRUTAS_VERDURAS": { etiqueta: "Frutas y Verduras", icon: "ion-spoon" },
+        "CARNICERIA": { etiqueta: "Carnicería", icon: "ion-knife" },
         "PANADERIA": { etiqueta: "Panadería", icon: "ion-cloud" },
-        "FUENTE_SODAS": { etiqueta: "Fuente de Sodas", icon: "ion-android-restaurant" },
+        "FUENTE_SODAS": { etiqueta: "Fuente de Sodas", icon: "ion-coffee" },
         "FARMACIA": { etiqueta: "Farmacia", icon: "ion-medkit" },
         "OPTICA": { etiqueta: "Óptica", icon: "ion-eye" },
-        "FLORERIA": { etiqueta: "Florería", icon: "ion-ios-rose" }
+        "FLORERIA": { etiqueta: "Florería", icon: "ion-leaf" }
       }
 
       var posicion = false;
@@ -512,7 +599,7 @@ angular.module('starter.sucursales', [])
       $scope.iniciar = function () {
 
       WL.Logger.debug("init map...");
-      busyIndicator = new WL.BusyIndicator("content", { text: "Buscando ubicación...", boxLength: 252 });
+      //busyIndicator = new WL.BusyIndicator("content", { text: "Buscando ubicación...", boxLength: 252 });
       busyIndicator.show();
 
         try{
@@ -803,7 +890,6 @@ angular.module('starter.sucursales', [])
         }
       );
  
-    };
-    
+    };    
   })
 ;

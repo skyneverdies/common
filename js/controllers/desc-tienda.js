@@ -36,11 +36,15 @@ angular.module('starter.desctienda', [])
 	var arregloImagenesService;
 	var arregloArchivoService;
 	var tempVigencia = localStorage.getItem('localStorageVersionador') || '';
-	var	vigencia = JSON.parse(tempVigencia);
-	$scope.myStyleVigencia = 	{
-				    "background-color" 	: 	vigencia[0].color,
-				    "margin-top"		: 	"1vh"
-				  	}
+	if (tempVigencia == '') {
+		console.log('localStorageVersionador vacio');
+	} else {
+		var	vigencia = JSON.parse(tempVigencia);
+		$scope.myStyleVigencia = 	{
+		    "background-color" 	: 	vigencia[0].color,
+		    "margin-top"		: 	"1vh"
+		}
+	}
 				  	
 	$scope.vista1 = function (){
 

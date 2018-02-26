@@ -87,7 +87,7 @@ app.factory("ContentProvider", function() {
 
 	collections[SUCURSALES_COLLECTION_NAME]= {};
 	collections[SUCURSALES_COLLECTION_NAME].searchFields= searchFields;
-	collections[SUCURSALES_COLLECTION_NAME].adapter = getAdapter(SUCURSALES_COLLECTION_NAME, 26000);
+	//collections[SUCURSALES_COLLECTION_NAME].adapter = getAdapter(SUCURSALES_COLLECTION_NAME, 26000);
 
 	collections[DESCBANNER_COLLECTION_NAME]= {};
 	collections[DESCBANNER_COLLECTION_NAME].searchFields= searchFields;
@@ -97,7 +97,7 @@ app.factory("ContentProvider", function() {
 	collections[CATEGORIAS_COLLECTION_NAME].searchFields= searchFields;
 	collections[CATEGORIAS_COLLECTION_NAME].adapter = getAdapter(CATEGORIAS_COLLECTION_NAME, 20000);
 
-	optionsIni.password = 'Costco01';
+	//optionsIni.password = 'Costco01';
     optionsIni.localKeyGen = false;
     optionsIni.clear = true;
 
@@ -567,7 +567,7 @@ app.factory("ContentProvider", function() {
 
 							collectionsDesc[SUCURSALES_COLLECTION_NAME]= {};
 							collectionsDesc[SUCURSALES_COLLECTION_NAME].searchFields= searchFields;
-							collectionsDesc[SUCURSALES_COLLECTION_NAME].adapter = getAdapter(SUCURSALES_COLLECTION_NAME, 26000);
+							//collectionsDesc[SUCURSALES_COLLECTION_NAME].adapter = getAdapter(SUCURSALES_COLLECTION_NAME, 26000);
 
 							collectionsDesc[DESCBANNER_COLLECTION_NAME]= {};
 							collectionsDesc[DESCBANNER_COLLECTION_NAME].searchFields= searchFields;
@@ -692,7 +692,7 @@ app.factory("ContentProvider", function() {
 
 								collectionsDesc[SUCURSALES_COLLECTION_NAME]= {};
 								collectionsDesc[SUCURSALES_COLLECTION_NAME].searchFields= searchFields;
-								collectionsDesc[SUCURSALES_COLLECTION_NAME].adapter = getAdapter(SUCURSALES_COLLECTION_NAME, 26000);
+								//collectionsDesc[SUCURSALES_COLLECTION_NAME].adapter = getAdapter(SUCURSALES_COLLECTION_NAME, 26000);
 
 								collectionsDesc[DESCBANNER_COLLECTION_NAME]= {};
 								collectionsDesc[DESCBANNER_COLLECTION_NAME].searchFields= searchFields;
@@ -866,7 +866,7 @@ app.factory("ContentProvider", function() {
 
 							collectionsDesc[SUCURSALES_COLLECTION_NAME]= {};
 							collectionsDesc[SUCURSALES_COLLECTION_NAME].searchFields= searchFields;
-							collectionsDesc[SUCURSALES_COLLECTION_NAME].adapter = getAdapter(SUCURSALES_COLLECTION_NAME, 26000);
+							//collectionsDesc[SUCURSALES_COLLECTION_NAME].adapter = getAdapter(SUCURSALES_COLLECTION_NAME, 26000);
 
 							collectionsDesc[DESCBANNER_COLLECTION_NAME]= {};
 							collectionsDesc[DESCBANNER_COLLECTION_NAME].searchFields= searchFields;
@@ -999,6 +999,7 @@ app.factory("ContentProvider", function() {
 					return;
 				}
 			})
+			/*
 			.then(function () {
 				try{
 					if(versionesServer[1].version != versionesLocal[1].version){
@@ -1052,6 +1053,7 @@ app.factory("ContentProvider", function() {
 					return;
 				}
 			})
+			*/
 			.fail(function (errorObject) {
 				/* Si hay falla en la carga de colecciones entonces borrar las colecciones*/
 				stateCP = mapStatesSinc[3];
